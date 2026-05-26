@@ -1,1 +1,7 @@
+# Ignore raw data files
 data/tranco_XW5QN.csv
+data/verified_online.csv.gz
+# Ignore local python caches
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
