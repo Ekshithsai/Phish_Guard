@@ -1,0 +1,9 @@
+fastapi==0.137.0
+httpx==0.28.1
+joblib==1.5.3
+pandas==3.0.3
+pydantic==2.13.4
+python_whois==0.9.6
+scikit_learn==1.9.0
+tldextract==5.3.1
+xgboost==3.2.0

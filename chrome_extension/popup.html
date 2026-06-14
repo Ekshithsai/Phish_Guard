@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 320px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0f172a; color: #e2e8f0; }
+    .header { padding: 16px; background: #1e293b; border-bottom: 1px solid #334155; display: flex; align-items: center; gap: 10px; }
+    .header h1 { font-size: 16px; font-weight: 600; color: #f1f5f9; }
+    .shield { font-size: 22px; }
+    .content { padding: 16px; }
+    .url-box { background: #1e293b; border-radius: 8px; padding: 10px 12px; font-size: 11px; color: #94a3b8; word-break: break-all; margin-bottom: 14px; border: 1px solid #334155; }
+    .verdict { border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; text-align: center; }
+    .verdict.safe { background: #052e16; border: 1px solid #166534; }
+    .verdict.phishing { background: #450a0a; border: 1px solid #991b1b; }
+    .verdict.loading { background: #1e293b; border: 1px solid #334155; }
+    .verdict-label { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .safe .verdict-label { color: #4ade80; }
+    .phishing .verdict-label { color: #f87171; }
+    .loading .verdict-label { color: #94a3b8; }
+    .verdict-sub { font-size: 12px; color: #94a3b8; }
+    .risk-bar-wrap { margin-bottom: 14px; }
+    .risk-label { font-size: 11px; color: #94a3b8; margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .risk-bar { height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden; }
+    .risk-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 10px 12px; }
+    .card-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .card-value { font-size: 13px; font-weight: 600; color: #e2e8f0; }
+    .card-value.danger { color: #f87171; }
+    .card-value.safe   { color: #4ade80; }
+    .card-value.warn   { color: #fbbf24; }
+    .scan-btn { width: 100%; padding: 10px; background: #3b82f6; border: none; border-radius: 8px; color: white; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+    .scan-btn:hover { background: #2563eb; }
+    .scan-btn:disabled { background: #334155; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="shield">🛡</span>
+    <h1>PhishGuard</h1>
+  </div>
+  <div class="content">
+    <div class="url-box" id="url-display">Loading...</div>
+    <div class="verdict loading" id="verdict-box">
+      <div class="verdict-label" id="verdict-label">Scanning...</div>
+      <div class="verdict-sub" id="verdict-sub">Checking this URL</div>
+    </div>
+    <div class="risk-bar-wrap">
+      <div class="risk-label">
+        <span>Risk score</span>
+        <span id="risk-pct">—</span>
+      </div>
+      <div class="risk-bar">
+        <div class="risk-fill" id="risk-fill" style="width:0%; background:#3b82f6;"></div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-label">VirusTotal</div>
+        <div class="card-value" id="vt-val">—</div>
+      </div>
+      <div class="card">
+        <div class="card-label">URLhaus</div>
+        <div class="card-value" id="uh-val">—</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Domain age</div>
+        <div class="card-value" id="age-val">—</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Registrar</div>
+        <div class="card-value" id="reg-val">—</div>
+      </div>
+    </div>
+    <button class="scan-btn" id="scan-btn">Run full scan</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
