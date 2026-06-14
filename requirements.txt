@@ -7,3 +7,4 @@ python_whois==0.9.6
 scikit_learn==1.9.0
 tldextract==5.3.1
 xgboost==3.2.0
+
