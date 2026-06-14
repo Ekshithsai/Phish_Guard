@@ -16,7 +16,13 @@ An ML-Powered Phishing URL Detection System with Cyber Threat Intelligence Integ
 ```
 
 ---
-
+## Tech Stack
+- ML: Python, XGBoost, scikit-learn, pandas
+- Backend: FastAPI, uvicorn
+- Frontend: React, Recharts, Tailwind
+- Extension: Chrome MV3
+- CTI: VirusTotal API, URLhaus API, python-whois
+---
 ## Features
 
 - XGBoost model trained on **80k URLs** (PhishTank + ISCX)
