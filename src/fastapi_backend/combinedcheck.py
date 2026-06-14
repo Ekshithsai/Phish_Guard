@@ -1,4 +1,3 @@
-# combinedcheck.py
 import httpx
 from fastapi import APIRouter
 from pydantic import BaseModel
@@ -7,7 +6,6 @@ from predict         import predict
 from whois_check           import whois_lookup
 from urlhauscheck    import urlhaus_check
 from virustotalcheck import virustotal_check
-
 router = APIRouter()
 class URLRequest(BaseModel):
     url: str
@@ -27,7 +25,6 @@ async def full_scan(req: URLRequest):
             age_flag = age_days < 90
         except:
             pass
-
     risk_score = ml["confidence"]
     if uh["is_malicious"]:   risk_score = min(1.0, risk_score + 0.3)
     if vt.get("malicious", 0) > 2:  risk_score = min(1.0, risk_score + 0.2)
